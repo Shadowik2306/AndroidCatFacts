@@ -1,5 +1,7 @@
 package com.example.myapplication
 
-class Cat (
-    val text: String,
-)
+import io.realm.RealmObject
+
+open class Cat() : RealmObject() {
+    lateinit var text: String
+}
