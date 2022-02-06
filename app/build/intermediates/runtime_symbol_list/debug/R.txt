@@ -2937,6 +2937,7 @@ int id textSpacerNoTitle 0x7f0801ac
 int id textStart 0x7f0801ad
 int id textTop 0x7f0801ae
 int id textView 0x7f0801af
+int id textView2id 0x7f0801e0
 int id text_input_end_icon 0x7f0801b0
 int id text_input_error_icon 0x7f0801b1
 int id text_input_start_icon 0x7f0801b2
@@ -3069,6 +3070,7 @@ int layout abc_search_dropdown_item_icons_2line 0x7f0b0018
 int layout abc_search_view 0x7f0b0019
 int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
+int layout activity_detail 0x7f0b0075
 int layout activity_main 0x7f0b001c
 int layout cat_item 0x7f0b001d
 int layout custom_dialog 0x7f0b001e
