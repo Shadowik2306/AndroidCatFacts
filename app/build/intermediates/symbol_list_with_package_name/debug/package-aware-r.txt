@@ -2511,6 +2511,7 @@ id BOTTOM_END
 id BOTTOM_START
 id CTRL
 id FUNCTION
+id FavoriteButtonID
 id META
 id NO_DEBUG
 id SHIFT

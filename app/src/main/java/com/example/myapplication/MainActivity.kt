@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -17,16 +18,27 @@ import org.json.JSONArray
 
 class MainActivity : AppCompatActivity() {
 
+    private var favoriteWindow = true
     private val url = "https://cat-fact.herokuapp.com/facts"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d("TAG", "HelloWorld")
         initRealm()
+        if (favoriteWindow) {
+            val queue = Volley.newRequestQueue(this)
+            getCatsFromServer(queue)
+        }
+        else {
 
-        val queue = Volley.newRequestQueue(this)
-        getCatsFromServer(queue)
+        }
+        FavoriteButtonID.setOnClickListener() {
+            finish();
+            overridePendingTransition(0, 0);
+            startActivity(getIntent());
+            favoriteWindow = false
+            overridePendingTransition(0, 0);
+        }
     }
 
     private fun initRealm() {
@@ -78,6 +90,7 @@ class MainActivity : AppCompatActivity() {
             val catText = jsonObject.getString("text")
             val cat = Cat()
             cat.text = catText
+            cat.favorite = "false"
             catList.add(cat)
         }
         return catList
