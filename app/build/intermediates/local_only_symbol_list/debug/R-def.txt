@@ -15,6 +15,7 @@ id recyclerViewId
 id textView
 id textView2id
 layout activity_detail
+layout activity_favorites
 layout activity_main
 layout cat_item
 mipmap ic_launcher

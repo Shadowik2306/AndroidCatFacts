@@ -3073,6 +3073,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_detail
+layout activity_favorites
 layout activity_main
 layout cat_item
 layout custom_dialog

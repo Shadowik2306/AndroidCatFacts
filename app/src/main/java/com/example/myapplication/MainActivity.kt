@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private val url = "https://cat-fact.herokuapp.com/facts"
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initRealm()
@@ -33,11 +35,8 @@ class MainActivity : AppCompatActivity() {
 
         }
         FavoriteButtonID.setOnClickListener() {
-            finish();
-            overridePendingTransition(0, 0);
-            startActivity(getIntent());
-            favoriteWindow = false
-            overridePendingTransition(0, 0);
+            val intent = Intent(this@MainActivity, Favorites::class.java)
+            startActivity(intent)
         }
     }
 
@@ -59,6 +58,8 @@ class MainActivity : AppCompatActivity() {
                 saveIntoDb(catList)
             },
             {
+                showListFromDB()
+                Log.i("debug", favoriteWindow.toString())
                 Toast.makeText(this, "Error. Not Found", Toast.LENGTH_SHORT).show()
             }
         )
@@ -68,7 +69,7 @@ class MainActivity : AppCompatActivity() {
     private fun saveIntoDb(cats: List<Cat>) {
         val realm = Realm.getDefaultInstance()
         realm.beginTransaction()
-        realm.copyToRealm(cats)
+        realm.copyToRealmOrUpdate(cats)
         realm.commitTransaction()
     }
 
@@ -79,7 +80,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun showListFromDB() {
         val cats = loadFromDb()
-        setList(cats)
+        val unic: MutableSet<String> = mutableSetOf()
+        val new_cats: MutableList<Cat> = mutableListOf()
+        cats.forEach() {cat
+            ->
+            if (!unic.contains(cat.text)) {
+                unic.add(cat.text)
+                new_cats.add(cat)
+            }
+        }
+        setList(new_cats)
     }
 
     private fun parseResponse(responseText: String): List<Cat> {
