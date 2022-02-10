@@ -51,7 +51,7 @@ class Favorites : AppCompatActivity() {
     }
 
     private fun setList(cats: List<Cat>) {
-        val adapter = CatAdapter(cats)
+        val adapter = CatAdapter(cats, 2)
         recyclerViewId.adapter = adapter
 
         val layoutManager = LinearLayoutManager(this)

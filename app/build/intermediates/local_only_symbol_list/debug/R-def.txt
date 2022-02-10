@@ -10,6 +10,7 @@ color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 id FavoriteButtonID
+id FavoriteId
 id guideline2
 id recyclerViewId
 id textView

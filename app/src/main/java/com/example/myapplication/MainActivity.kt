@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
     private var favoriteWindow = true
     private val url = "https://cat-fact.herokuapp.com/facts"
 
+    fun getId() : Int {
+        return 1
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -56,9 +60,10 @@ class MainActivity : AppCompatActivity() {
                 val catList = parseResponse(response)
                 setList(catList)
                 saveIntoDb(catList)
+                showListFromDB()
             },
             {
-                showListFromDB()
+
                 Log.i("debug", favoriteWindow.toString())
                 Toast.makeText(this, "Error. Not Found", Toast.LENGTH_SHORT).show()
             }
@@ -68,8 +73,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun saveIntoDb(cats: List<Cat>) {
         val realm = Realm.getDefaultInstance()
+        val new_cats: MutableList<Cat> = mutableListOf()
         realm.beginTransaction()
-        realm.copyToRealmOrUpdate(cats)
+        cats.forEach() {cat
+            ->
+            if (!loadFromDb().toSet().contains(cat)) new_cats.add(cat)
+
+        }
+        realm.copyToRealmOrUpdate(new_cats)
         realm.commitTransaction()
     }
 
@@ -107,7 +118,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setList(cats: List<Cat>) {
-        val adapter = CatAdapter(cats)
+        val adapter = CatAdapter(cats, 1)
         recyclerViewId.adapter = adapter
 
         val layoutManager = LinearLayoutManager(this)
