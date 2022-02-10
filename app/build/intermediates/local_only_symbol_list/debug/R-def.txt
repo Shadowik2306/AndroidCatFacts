@@ -11,7 +11,9 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 id FavoriteButtonID
 id FavoriteId
+id buttonId
 id guideline2
+id imageView
 id recyclerViewId
 id textView
 id textView2id

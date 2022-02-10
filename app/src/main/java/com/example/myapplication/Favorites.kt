@@ -21,6 +21,10 @@ class Favorites : AppCompatActivity() {
             val intent = Intent(this@Favorites, MainActivity::class.java)
             startActivity(intent)
         }
+
+        supportActionBar?.apply {
+            title = "Избранное"
+        }
     }
 
     private fun initRealm() {

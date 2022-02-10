@@ -22,25 +22,20 @@ class MainActivity : AppCompatActivity() {
     private var favoriteWindow = true
     private val url = "https://cat-fact.herokuapp.com/facts"
 
-    fun getId() : Int {
-        return 1
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initRealm()
-        if (favoriteWindow) {
-            val queue = Volley.newRequestQueue(this)
-            getCatsFromServer(queue)
-        }
-        else {
-
-        }
+        val queue = Volley.newRequestQueue(this)
+        getCatsFromServer(queue)
         FavoriteButtonID.setOnClickListener() {
             val intent = Intent(this@MainActivity, Favorites::class.java)
             startActivity(intent)
+        }
+
+        supportActionBar?.apply {
+            title = "Главное меню"
         }
     }
 

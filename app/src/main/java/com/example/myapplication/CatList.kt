@@ -87,6 +87,7 @@ class CatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val intent = Intent(context, DetailActivity::class.java)
         intent.putExtra(CAT_FACT_TEXT_TAG, cat.text)
         context.startActivities(arrayOf(intent))
+
     }
 }
 
